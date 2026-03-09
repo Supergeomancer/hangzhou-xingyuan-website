@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州兴元未来信息科技有限公司 - 元宇宙内容生态引领者</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #334155;
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: #334155;
+        }
+
+        /* 移动端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* CTA按钮 */
+        .nav-cta {
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.06) 0%, transparent 70%);
+            bottom: -250px;
+            left: -250px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 1.5rem 0 2.5rem;
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+
+        /* 通用区块样式 */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: #a0aec0;
+            font-size: 1.1rem;
+        }
+
+        /* 公司概况 */
+        .about-section {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(248, 250, 252, 0.8) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #334155;
+        }
+
+        .about-text p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.12);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #64748b;
+            margin-top: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* 3B1C战略 */
+        .strategy-section {
+            background: linear-gradient(180deg, rgba(248, 250, 252, 0.6) 0%, rgba(241, 245, 249, 0.9) 100%);
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .strategy-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(102, 126, 234, 0.12);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.04);
+        }
+
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .strategy-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .strategy-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .strategy-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .strategy-card p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        /* 业务详情 */
+        .business-section {
+            background: rgba(22, 33, 62, 0.5);
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .business-card {
+            background: rgba(15, 15, 26, 0.8);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .business-card:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+
+        .business-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .business-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .business-card h4 {
+            font-size: 1.1rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .business-card ul {
+            list-style: none;
+        }
+
+        .business-card li {
+            color: #a0aec0;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .business-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        /* 核心团队 */
+        .team-section {
+            background: linear-gradient(180deg, rgba(15, 15, 26, 0) 0%, rgba(118, 75, 162, 0.05) 50%, rgba(15, 15, 26, 0) 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: rgba(22, 33, 62, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .team-role {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        /* 企业文化 */
+        .culture-section {
+            background: rgba(22, 33, 62, 0.5);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .culture-box {
+            background: rgba(15, 15, 26, 0.6);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .culture-box h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .culture-list {
+            list-style: none;
+        }
+
+        .culture-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .culture-list li:last-child {
+            border-bottom: none;
+        }
+
+        .culture-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+        }
+
+        .culture-desc {
+            color: #a0aec0;
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            background: linear-gradient(180deg, rgba(15, 15, 26, 0) 0%, rgba(102, 126, 234, 0.1) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: rgba(22, 33, 62, 0.6);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .contact-item p {
+            color: #a0aec0;
+        }
+
+        /* 页脚 */
+        footer {
+            background: linear-gradient(180deg, rgba(15, 15, 26, 0.95) 0%, rgba(10, 10, 20, 0.98) 100%);
+            border-top: 1px solid rgba(102, 126, 234, 0.15);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-tagline {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .footer-desc {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .footer-contact .contact-icon {
+            font-size: 1.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-contact strong {
+            display: block;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-contact p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(102, 126, 234, 0.1);
+            padding-top: 2rem;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #667eea;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 15, 26, 0.98);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 0.5rem;
+                border-top: 1px solid rgba(102, 126, 234, 0.15);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .strategy-grid,
+            .business-grid,
+            .team-grid,
+            .contact-grid,
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="兴元商务logo.jpg" alt="杭州兴元Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">公司概况</a></li>
+                <li><a href="#strategy">3B1C战略</a></li>
+                <li><a href="#business">核心业务</a></li>
+                <li><a href="#team">核心团队</a></li>
+                <li><a href="#culture">企业文化</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">3B1C战略 · 元宇宙内容生态</div>
+            <h1>打造沉浸式的<br>智能数字开放世界</h1>
+            <p class="hero-subtitle">中国最大元宇宙内容和运营平台</p>
+            <a href="#about" class="cta-button">探索元宇宙未来</a>
+        </div>
+    </section>
+
+    <!-- 公司概况 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>公司概况</h2>
+                <p>山东外事职业大学元宇宙研究院孵化企业，成立于2025年4月</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>技术驱动创新，用3A标准定义标杆</h3>
+                    <p>杭州兴元未来信息科技有限公司聚焦元宇宙内容生产与运营，以自研底层技术与真实场景交付能力为基础，为教育、数字文旅、影视与沉浸式娱乐等领域提供高质量元宇宙内容与解决方案。</p>
+                    <p>公司注册于杭州云栖小镇，办公位于千岛湖智谷大厦，种子轮估值已达5000万元。以杭州兴元为中枢，区域布局公司形成全国性交付网络。</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">核心专利</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">软件著作权</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5000万</div>
+                        <div class="stat-label">种子轮估值</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">客户响应速度</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3B1C战略 -->
+    <section id="strategy" class="strategy-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>3B1C战略架构</h2>
+                <p>B端赋能C端，C端反哺B端 —— 打造内容生态闭环</p>
+            </div>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <div class="strategy-number">1B</div>
+                    <h3>元宇宙教育</h3>
+                    <p>教育场景解决方案，产业学院共建、元宇宙图书馆、虚拟仿真实训空间</p>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-number">2B</div>
+                    <h3>AI影视</h3>
+                    <p>工业化内容生产，智能剧本、AI生成、自动剪辑、后期合成全流程自动化</p>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-number">3B</div>
+                    <h3>XR大空间</h3>
+                    <p>线下沉浸式体验，文化研学、恐怖密室、竞技对抗、亲子互动多场景覆盖</p>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-number">C</div>
+                    <h3>元境平台</h3>
+                    <p>国内最大VR内容发布平台，教育、游戏、影音、互动体验多形态内容汇聚</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心业务 -->
+    <section id="business" class="business-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心业务矩阵</h2>
+                <p>四大业务板块，构建元宇宙内容生态完整闭环</p>
+            </div>
+            <div class="business-grid">
+                <div class="business-card">
+                    <div class="business-icon">🎓</div>
+                    <h3>元宇宙教育</h3>
+                    <h4>1B业务 · 教育场景解决方案</h4>
+                    <ul>
+                        <li>产业学院共建 —— 校企深度合作，产教融合示范基地</li>
+                        <li>元宇宙图书馆 —— 国内首个沉浸式元宇宙图书馆</li>
+                        <li>虚拟仿真实训空间 —— 技能实训+AI助教，支持工业数字孪生</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">🎬</div>
+                    <h3>AI影视</h3>
+                    <h4>2B业务 · 工业化内容生产</h4>
+                    <ul>
+                        <li>智能剧本 —— AI辅助剧本创作与优化</li>
+                        <li>AI生成 —— 自动化内容生成与渲染</li>
+                        <li>自动剪辑 —— 智能化后期剪辑处理</li>
+                        <li>后期合成 —— 全自动化后期合成输出</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">🕹️</div>
+                    <h3>XR大空间</h3>
+                    <h4>3B业务 · 线下沉浸式体验</h4>
+                    <ul>
+                        <li>文化研学 —— 《重回山海》系列，数字研学典范</li>
+                        <li>恐怖密室 —— 《消失的校花》，社交爆款</li>
+                        <li>竞技对抗 —— 《破解突袭》，硬核竞技体验</li>
+                        <li>亲子互动 —— 《神奇森友会》，广泛引流</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心团队 -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心团队</h2>
+                <p>技术驱动 · 专业护航 —— 打造行业领先的技术壁垒</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>邓俊晖</h3>
+                    <div class="team-role">COO · 首席运营官</div>
+                    <p>曾就职于中国电子科技集团，PMP认证项目经理，10年研发管理经验</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">💻</div>
+                    <h3>技术团队</h3>
+                    <div class="team-role">UE开发 · 美术建模</div>
+                    <p>人工智能与大模型领域专家，10+核心专利，100+软件著作权</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🚀</div>
+                    <h3>运营与服务团队</h3>
+                    <div class="team-role">专业项目交付</div>
+                    <p>24小时内响应客户需求，平均项目交付周期缩短30%，确保客户满意度</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 企业文化 -->
+    <section id="culture" class="culture-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>企业文化</h2>
+                <p>使命引领未来，愿景驱动发展</p>
+            </div>
+            <div class="culture-grid">
+                <div class="culture-box">
+                    <h3>🎯 使命</h3>
+                    <ul class="culture-list">
+                        <li>
+                            <div class="culture-title">打造沉浸式的智能数字开放世界</div>
+                            <div class="culture-desc">让虚拟与现实自由联通</div>
+                        </li>
+                        <li>
+                            <div class="culture-title">教育责任</div>
+                            <div class="culture-desc">与职业院校深度合作，共建产业学院，培养元宇宙领域的大国工匠，为国家数字化转型提供人才支撑</div>
+                        </li>
+                        <li>
+                            <div class="culture-title">科技赋能文化</div>
+                            <div class="culture-desc">用数字技术激活传统文化IP，让文化插上科技的翅膀，打造沉浸式文化体验新场景，助力文化强国建设</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="culture-box">
+                    <h3>🌟 愿景与价值观</h3>
+                    <ul class="culture-list">
+                        <li>
+                            <div class="culture-title">成为最大的元宇宙内容生产和运营平台</div>
+                            <div class="culture-desc">愿景引领我们不断前行</div>
+                        </li>
+                        <li>
+                            <div class="culture-title">创新驱动</div>
+                            <div class="culture-desc">技术驱动创新，用3A标准定义标杆</div>
+                        </li>
+                        <li>
+                            <div class="culture-title">年轻敢为</div>
+                            <div class="culture-desc">敢想敢拼，不惧挑战，勇立潮头</div>
+                        </li>
+                        <li>
+                            <div class="culture-title">生态共赢</div>
+                            <div class="culture-desc">与高校、企业、用户共生共荣</div>
+                        </li>
+                        <li>
+                            <div class="culture-title">极致执行</div>
+                            <div class="culture-desc">高效执行，每个项目都追求极致</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+                <p>期待与您共创元宇宙美好未来</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>注册地址</h4>
+                    <p>杭州云栖小镇</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <h4>办公地址</h4>
+                    <p>千岛湖智谷大厦</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h4>商务合作</h4>
+                    <p>期待与您合作共赢</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="兴元商务logo.jpg" alt="杭州兴元Logo">
+                    </div>
+                    <p class="footer-tagline">3B1C战略 · 元宇宙内容生态</p>
+                    <p class="footer-desc">打造沉浸式的智能数字开放世界<br>成为中国最大的元宇宙内容生产和运营平台</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">微信</a>
+                        <a href="#" class="social-link">微博</a>
+                        <a href="#" class="social-link">B站</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">快速导航</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">公司概况</a></li>
+                        <li><a href="#strategy">3B1C战略</a></li>
+                        <li><a href="#business">核心业务</a></li>
+                        <li><a href="#team">核心团队</a></li>
+                        <li><a href="#culture">企业文化</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">核心业务</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">元宇宙教育</a></li>
+                        <li><a href="#">AI影视制作</a></li>
+                        <li><a href="#">XR大空间体验</a></li>
+                        <li><a href="#">元境内容平台</a></li>
+                        <li><a href="#">VR万向仪硬件</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">联系我们</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>注册地址</strong>
+                                <p>浙江省杭州市西湖区云栖小镇<br>杭州兴元未来信息科技有限公司</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon">🏢</span>
+                            <div>
+                                <strong>办公地址</strong>
+                                <p>浙江省杭州市淳安县千岛湖智谷大厦</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📧</span>
+                            <div>
+                                <strong>商务合作</strong>
+                                <p>contact@xingyuan-tech.com</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>联系电话</strong>
+                                <p>400-XXX-XXXX（工作日 9:00-18:00）</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>© 2025 杭州兴元未来信息科技有限公司 版权所有</p>
+                        <p class="footer-icp">浙ICP备XXXXXXXX号 | 浙公网安备 XXXXXXXX号</p>
+                    </div>
+                    <div class="footer-bottom-links">
+                        <a href="#about">关于我们</a>
+                        <a href="#business">业务合作</a>
+                        <a href="#">隐私政策</a>
+                        <a href="#">服务条款</a>
+                        <a href="#">网站地图</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // 点击导航链接后关闭移动端菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 导航栏滚动效果 + 当前页面激活状态
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            let current = '';
+
+            // 导航栏背景变化
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(15, 15, 26, 0.98)';
+                nav.style.boxShadow = '0 4px 20px rgba(102, 126, 234, 0.1)';
+            } else {
+                nav.style.background = 'rgba(15, 15, 26, 0.98)';
+                nav.style.boxShadow = 'none';
+            }
+
+            // 当前页面激活状态
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // 滚动显示动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.strategy-card, .business-card, .team-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
